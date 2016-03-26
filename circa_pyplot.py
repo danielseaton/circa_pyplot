@@ -2,19 +2,17 @@ from matplotlib.patches import Rectangle
 from matplotlib.pyplot import *
 
 #TODO - allow input of linestyles
-#TODO - create function to work on single instance of axes
 
-fig = figure()
-ax = fig.add_subplot(221)
-
-#Required inputs
-timepoints = range(0,25,4)
-data = [[1.1,1.2,1.3,1.4,1.5,1.4,1.1],
-        [3.1,0.2,0.15,1.1,1.1,1.5,3.1]]
-colors = ['w','grey','k']
-transition_times = [0,8,16,24]
-errors = [[0.1 for _ in y] for y in data]
-
+#fig = figure()
+#ax = fig.add_subplot(221)
+#
+##Required inputs
+#timepoints = range(0,25,4)
+#data = [[1.1,1.2,1.3,1.4,1.5,1.4,1.1],
+#        [3.1,0.2,0.15,1.1,1.1,1.5,3.1]]
+#colors = ['w','grey','k']
+#transition_times = [0,8,16,24]
+#errors = [[0.1 for _ in y] for y in data]
 
 def circa_pyplot(timepoints,data,transition_times,colors,errors=None,ax=None,
                  xtick_locations=None,xlabel_text='',ylabel_text='',
@@ -67,6 +65,6 @@ def circa_pyplot(timepoints,data,transition_times,colors,errors=None,ax=None,
         xticks(xtick_locations)
     tight_layout()
 
-circa_pyplot(timepoints,data,transition_times,colors,errors=errors,ax=ax,
-             xlabel_text='Time (ZT h)',ylabel_text='Relative Expression',
-             xtick_locations=range(0,25,4))
+#circa_pyplot(timepoints,data,transition_times,colors,errors=errors,ax=ax,
+#             xlabel_text='Time (ZT h)',ylabel_text='Relative Expression',
+#             xtick_locations=range(0,25,4))

@@ -19,7 +19,7 @@ from matplotlib.pyplot import *
 
 def circa_pyplot(transition_times,colors,ax=None,timepoints=None,data=None,errors=None,
                  xtick_locations=None,xlabel_text='',ylabel_text='',
-                 fontsize=14):
+                 ymin=0,ymax=None,linestyle='s-',fontsize=14):
     
     if not ax:
         #plot a new figure
@@ -29,12 +29,6 @@ def circa_pyplot(transition_times,colors,ax=None,timepoints=None,data=None,error
     xmin = transition_times[0]
     xmax = transition_times[-1]
     
-    #Optional inputs
-    linestyle = 's-'
-    ymin = 0
-    ymax = None
-    legend = None
-
     if data:
         if errors:
             for timeseries,timeseries_errors in zip(data,errors):

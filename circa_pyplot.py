@@ -1,10 +1,10 @@
 from matplotlib.patches import Rectangle
 from matplotlib.pyplot import *
 
-#TODO - allow input of linestyles
-
+##TODO - allow input of linestyles
+#
 #fig = figure()
-#ax = fig.add_subplot(221)
+#ax = fig.add_subplot(111)
 #
 ##Required inputs
 #timepoints = range(0,25,4)
@@ -13,8 +13,11 @@ from matplotlib.pyplot import *
 #colors = ['w','grey','k']
 #transition_times = [0,8,16,24]
 #errors = [[0.1 for _ in y] for y in data]
+#
+#for x in data:
+#    plot(timepoints,x)
 
-def circa_pyplot(timepoints,data,transition_times,colors,errors=None,ax=None,
+def circa_pyplot(transition_times,colors,ax=None,timepoints=None,data=None,errors=None,
                  xtick_locations=None,xlabel_text='',ylabel_text='',
                  fontsize=14):
     
@@ -23,24 +26,22 @@ def circa_pyplot(timepoints,data,transition_times,colors,errors=None,ax=None,
         fig = figure()
         ax = fig.add_subplot(111)
 
-    xmin = timepoints[0]
-    xmax = timepoints[-1]
+    xmin = transition_times[0]
+    xmax = transition_times[-1]
     
     #Optional inputs
     linestyle = 's-'
     ymin = 0
     ymax = None
     legend = None
-    
-    #number of timeseries
-    nTS = len(data)
-    
-    
-    for timeseries,timeseries_errors in zip(data,errors):
+
+    if data:
         if errors:
-            errorbar(timepoints,timeseries,yerr=timeseries_errors,fmt=linestyle)
+            for timeseries,timeseries_errors in zip(data,errors):
+                errorbar(timepoints,timeseries,yerr=timeseries_errors,fmt=linestyle)
         else:
-            plot(timepoints,timeseries,linestyle)
+            for timeseries in data:
+                plot(timepoints,timeseries,linestyle)
     
     
     if ymax:
@@ -65,6 +66,7 @@ def circa_pyplot(timepoints,data,transition_times,colors,errors=None,ax=None,
         xticks(xtick_locations)
     tight_layout()
 
-#circa_pyplot(timepoints,data,transition_times,colors,errors=errors,ax=ax,
+#circa_pyplot(transition_times,colors,timepoints=timepoints,data=data,ax=ax,
 #             xlabel_text='Time (ZT h)',ylabel_text='Relative Expression',
 #             xtick_locations=range(0,25,4))
+#circa_pyplot(transition_times,colors,ax)
